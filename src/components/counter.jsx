@@ -1,56 +1,38 @@
-import React from 'react';
-import {Container, Button} from 'react-bootstrap';
-import Header from './header';
+import React, { Component } from 'react'
+import {Button, Badge, Container} from 'react-bootstrap'
+import TitleBar from './titlebar';
 
-class Counter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0,
-    };
-  }
+export default class Counter extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            count: 0
+        }
+    }
 
-  incrementCounter = () => {
-    this.setState((prevState) => {
-      return {
-        count: prevState.count + 1,
-      };
-    });
-  };
+    incrementCounter = () => {
+        this.setState((prevState) => ({
+            count: prevState.count + 1
+        }))
+    }
 
-  decrementCounter = () => {
-    if (this.state.count < 1) return;
-    this.setState((prevState) => {
-      return {
-        count: prevState.count - 1,
-      };
-    });
-  };
+    decrementCounter = () => {
+        this.setState((prevState) => {
+            if (prevState.count < 1) return;
+            return {count: prevState.count - 1}
+        })
+    }
 
-  componentDidMount() {
-    console.log('componentDidMount');
-  }
-
-  componentWillMount() {
-    console.log('componentWillMount');
-  }
-
-  render() {
-    return (
-      <Container className='mt-4'>
-        <Header title='Counter App' />
-        <div className='d-flex justify-content-around mt-4'>
-          <Button variant='warning' onClick={this.decrementCounter}>
-            -
-          </Button>
-          <p>{this.state.count}</p>
-          <Button variant='success' onClick={this.incrementCounter}>
-            +
-          </Button>
-        </div>
-      </Container>
-    );
-  }
+    render() {
+        return (
+            <>
+            <TitleBar title="Counter App" />
+            <Container className="d-flex justify-content-around mt-5">
+                <Button variant="warning" onClick={this.decrementCounter} style={{width: "4rem"}}>-</Button>
+                <h1><Badge variant="secondary" >{this.state.count}</Badge></h1>
+                <Button variant="success" onClick={this.incrementCounter} style={{width: "4rem"}}>+</Button>
+            </Container>
+            </>
+        )
+    }
 }
-
-export default Counter;

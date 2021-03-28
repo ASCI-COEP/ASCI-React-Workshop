@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ASCI React",
+  "name": "React.js workshop taken under ASCI COEP",
   "icons": [
     {
       "src": "favicon.ico",

@@ -1,22 +1,44 @@
 import React from 'react';
-import {Navbar, Nav, NavDropdown, Container} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
+import {Navbar, Nav, Container} from 'react-bootstrap';
 
-function MyNavbar() {
+let linkStyle = {
+  color: 'inherit',
+  textDecoration: 'none',
+};
+
+const MyNavbar = () => {
   return (
     <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
       <Container>
-        <Navbar.Brand href='#home'>ASCI React.js</Navbar.Brand>
+        <Navbar.Brand>
+          <Link to='/' style={linkStyle}>
+            ASCI React.js
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='ml-auto'>
-            <Nav.Link href='#features'>Counter App</Nav.Link>
-            <Nav.Link href='#pricing'>Search Filtering</Nav.Link>
-            <Nav.Link href='#pricing'>Random Jokes</Nav.Link>
+            <Nav.Link>
+              <Link to='/counter-app' style={linkStyle}>
+                Counter App
+              </Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to='/search-filter' style={linkStyle}>
+                Search Filtering
+              </Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to='/random-joke' style={linkStyle}>
+                Random Jokes
+              </Link>
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-}
+};
 
 export default MyNavbar;
